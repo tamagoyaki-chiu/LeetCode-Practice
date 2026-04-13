@@ -53,6 +53,7 @@ class Solution:
         return false
 ```
 
+###
 ### 3回連続で再現できるようになるまで練習
 
 所要時間の記録：
@@ -62,6 +63,61 @@ class Solution:
 3回目：1:05
 
 ```Python
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        visited = set()
+        node = head
+        while node:
+            if node in visited:
+                return True
+            visited.add(node)
+            node = node.next
+        return False
+```
+
+###
+##
+### 2026.04.13 もう一度3回連続で再現できるようになるまで練習   
+第一次挑戦の際に出た問題点です：(GPTに確認したところ、以下のルールを理解しました)   
+　
+## 1. while 文の配置が正しくなかった  
+Pythonではインデント（字下げ）がコードの構造を決定するため、  
+同じ階層の処理は必ず同じ位置に揃えて記述する必要がある。  
+インデントがずれている場合、Pythonはそれを別のブロックとして解釈するため、  
+IndentationErrorが発生する。  
+while文のようなループ構文では、 
+初期化処理はループの外に記述し、whileの中にループ処理全体をまとめる。  
+また、ループ内の処理（条件判定・更新処理など）はすべてwhileブロック内に記述し、  
+特にポインタの更新（node = node.next）は必ずループの最後に配置することで、  
+正しく繰り返し処理が継続される。  
+## 2. 条件分岐は if を使うべきところで、誤って for のような書き方をしてしまった  
+for文は本来、コレクション（リストやセットなど）を順番に走査するための構文である。  
+今回のケースでは、本来は「条件判定（if）」を行うべき場面で誤ってfor文を使用しており、  
+その結果、ループ変数が意図せず上書きされてしまい、処理対象のnodeが破壊される問題が発生する。  
+## 3. ":" の位置が正しくなかった  
+インデント（字下げ）で処理ブロックを書く場合は、必ず「:」を付ける  
+    例えば：  
+        if / for / while の後ろには必ず「:」を付ける  
+        def や class の後ろには必ず「:」を付ける  
+        処理内容はインデントで記述する
+  
+
+```Python
+#間違ったバージョン
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        visited = set()
+        node = head
+            while node:
+                for node in visited
+                return True
+            visited.add(node):
+            node = node.next
+        return False
+```
+また、この問題は3回連続で再現できました。　
+```Python
+#正しいバージョン
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         visited = set()
