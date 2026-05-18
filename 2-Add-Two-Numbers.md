@@ -11,6 +11,8 @@ Step3 : 3回続けてエラーが出ないように書く。ドキュメント�
 一回目の発想としては、まず2つのLinkedListを走査しながら、`node × 10 + 次のnode` のような形で数値へ変換し、その後2つの値を加算することを考えました。
 その後、加算結果を反転し、10で割りながら新しいLinkedListを作成しようとしていました。
 
+構文への理解が浅かったため、最終的にはうまく実装まで落とし込むことができませんでした。
+
 ```python
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
@@ -25,6 +27,8 @@ class Solution:
         list12total = list1val + list2val
         newlist12total = list12total / 10
 ```
+
+### 解答を参考にする
 自分の発想を ChatGPT に投げてみたところ
 ```python
 class Solution:
