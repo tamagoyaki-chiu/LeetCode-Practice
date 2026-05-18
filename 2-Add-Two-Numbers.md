@@ -25,3 +25,36 @@ class Solution:
         list12total = list1val + list2val
         newlist12total = list12total / 10
 ```
+自分の発想を ChatGPT に投げてみたところ
+```python
+class Solution:
+    def addTwoNumbers(self, l1, l2):
+
+        def to_number(node):
+            num = 0
+            digit = 1
+
+            while node:
+                num += node.val * digit
+                digit *= 10
+                node = node.next
+
+            return num
+
+        total = to_number(l1) + to_number(l2)
+
+        dummy = ListNode()
+        current = dummy
+
+        if total == 0:
+            return ListNode(0)
+
+        while total > 0:
+            digit = total % 10
+            current.next = ListNode(digit)
+
+            current = current.next
+            total //= 10
+
+        return dummy.next
+```
