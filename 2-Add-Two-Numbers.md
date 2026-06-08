@@ -27,7 +27,7 @@ class Solution:
         list12total = list1val + list2val
         newlist12total = list12total / 10
 ```
-
+## step 2
 ### 解答を参考にする
 
 まず自分の発想を ChatGPT に投げてみたところ
