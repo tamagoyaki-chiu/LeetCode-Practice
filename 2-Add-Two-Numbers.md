@@ -28,7 +28,6 @@ class Solution:
         newlist12total = list12total / 10
 ```
 ## step 2
-### 解答を参考にする
 
 まず自分の発想を ChatGPT に投げてみたところ  
 わかりやすいと思います、問題も解決できそうですが、あまり良い解法ではない気がします。  
@@ -70,7 +69,7 @@ class Solution:
         return dummy.next
 ```
 
-他の方の PR を見てみる  
+### 他の方の PR を見てみる  
 refer to  
 
 https://github.com/wanwan87/LeetCode_arai60/pull/5/changes  
