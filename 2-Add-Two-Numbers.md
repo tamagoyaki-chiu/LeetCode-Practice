@@ -74,8 +74,8 @@ class Solution:
 refer to 
 
 https://github.com/wanwan87/LeetCode_arai60/pull/5/changes  
-https://github.com/takao-Tokunaga/leetcode/pull/5/changes　　
-https://github.com/rimokem/arai60/pull/5/changes　　
+https://github.com/takao-Tokunaga/leetcode/pull/5/changes  
+https://github.com/rimokem/arai60/pull/5/changes  
 
 どちらかの桁がまだ残っている、または繰り上がり（carry）が残っている限り、処理を続る。  
 
