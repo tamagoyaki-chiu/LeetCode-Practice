@@ -29,7 +29,14 @@ class Solution:
 ```
 
 ### 解答を参考にする
-自分の発想を ChatGPT に投げてみたところ
+
+まず自分の発想を ChatGPT に投げてみたところ
+わかりやすいと思います、問題も解決できそうですが、あまり良い解法ではない気がします。
+
+原因：
+数値に変換する処理が必要になり、実装が回りくどくなる。
+Python では問題ないが、他の言語では整数の桁数制限によりオーバーフローする可能性がある。
+
 ```python
 class Solution:
     def addTwoNumbers(self, l1, l2):
@@ -59,6 +66,65 @@ class Solution:
 
             current = current.next
             total //= 10
+
+        return dummy.next
+```
+
+他の方の PR を見てみる
+refer to 
+
+https://github.com/wanwan87/LeetCode_arai60/pull/5/changes  
+https://github.com/takao-Tokunaga/leetcode/pull/5/changes　　
+https://github.com/rimokem/arai60/pull/5/changes　　
+
+どちらかの桁がまだ残っている、または繰り上がり（carry）が残っている限り、処理を続る。  
+
+```python
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode()
+        node = dummy
+        carry = 0
+        while l1 is not None or l2 is not None or carry != 0:
+            if l1 is not None:
+                value1 = l1.val
+            else:
+                value1 = 0
+            if l2 is not None:
+                value2 = l2.val
+            else:
+                value2 = 0 
+            tmp = value1 + value2 + carry
+            carry = tmp // 10
+            digit = tmp % 10
+            node.next = ListNode(digit)
+            node = node.next
+            if l1 is not None:
+                l1 = l1.next
+            if l2 is not None:
+                l2 = l2.next
+        return dummy.next
+```
+
+```python
+        dummy = ListNode()
+        sum_node = dummy
+        node1 = l1
+        node2 = l2
+        carry = 0
+        while node1 is not None or node2 is not None:
+            value1 = node1.val if node1 is not None else 0
+            value2 = node2.val if node2 is not None else 0
+
+            carry, digit = divmod(value1 + value2 + carry, 10)
+            sum_node.next = ListNode(digit)
+
+            sum_node = sum_node.next
+            node1 = node1.next if node1 is not None else None
+            node2 = node2.next if node2 is not None else None
+
+        if carry != 0:
+            sum_node.next = ListNode(carry)
 
         return dummy.next
 ```
