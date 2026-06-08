@@ -70,8 +70,8 @@ class Solution:
         return dummy.next
 ```
 
-他の方の PR を見てみる
-refer to 
+他の方の PR を見てみる  
+refer to  
 
 https://github.com/wanwan87/LeetCode_arai60/pull/5/changes  
 https://github.com/takao-Tokunaga/leetcode/pull/5/changes  
