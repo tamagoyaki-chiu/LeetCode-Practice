@@ -128,3 +128,33 @@ class Solution:
 
         return dummy.next
 ```
+
+## step 3  
+3回続けてエラーが出ないように書く  
+
+```python
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode()
+        node = dummy
+        carry = 0
+        while l1 is not None or l2 is not None or carry != 0:
+            if l1 is not None:
+                value1 = l1.val
+            else:
+                value1 = 0
+            if l2 is not None:
+                value2 = l2.val
+            else:
+                value2 = 0 
+            tmp = value1 + value2 + carry
+            carry = tmp // 10
+            digit = tmp % 10
+            node.next = ListNode(digit)
+            node = node.next
+            if l1 is not None:
+                l1 = l1.next
+            if l2 is not None:
+                l2 = l2.next
+        return dummy.next
+```
