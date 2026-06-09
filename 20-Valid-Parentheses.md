@@ -10,7 +10,15 @@ Step3 : 3回続けてエラーが出ないように書く。ドキュメント�
 
 
 ```python
-
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if str != "":
+            when str[0] is ")" or "}" or "]"
+                return false
+            when str[0] is "(" or "{" or "["
+                case 1 
+                case 2 
+                case 3 str[-1]
 ```
 
 ## step 2
