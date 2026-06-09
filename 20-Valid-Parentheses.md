@@ -74,8 +74,8 @@ class Solution:
 ```
 
 ### Dictionary
-自分のStep 1 発想は Stack というより Dictionary に近いものでした。　　
-Stack の練習にはなりませんでしたが、一応これでも解法の一つではあると思います。　　
+自分のStep 1 発想は Stack というより Dictionary に近いものでした。  
+Stack の練習にはなりませんでしたが、一応これでも解法の一つではあると思います。  
 ```python
 class Solution:
     def isValid(self, s: str) -> bool:
