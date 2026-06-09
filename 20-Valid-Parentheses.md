@@ -35,11 +35,14 @@ https://neetcode.io/solutions/valid-parentheses
 
 ### Stack
 どちらも Stack を使った解法ですが、  
-前者は「閉じ括弧 → 開き括弧」の対応表を使い、  
-後者は「開き括弧 → 閉じ括弧」の対応表を使っています。  
+前者は「閉じ括弧 → 開き括弧」の対応表を使い、後者は「開き括弧 → 閉じ括弧」の対応表を使っています。  
 後者は空の Stack に対して pop() しないように、番兵（sentinel）として "#" を入れている点が特徴です。  
 個人的には一つ目の書き方のほうが好きです。空の Stack を考慮するための特別な工夫がいらないの感じ。　　
 
+#### 一つ目
+① Stack の先頭を確認  
+② 対応する括弧か判定  
+③ OKなら pop()  
 ```python
 class Solution:
     def isValid(self, s: str) -> bool:
@@ -58,6 +61,9 @@ class Solution:
         return True if not stack else False
 ```
 
+#### 二つ目
+① pop() で取り出す  
+② 対応する括弧か判定  
 ```python
 class Solution:
     def isValid(self, s: str) -> bool:
