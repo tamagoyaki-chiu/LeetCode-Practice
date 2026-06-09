@@ -27,9 +27,9 @@ class Solution:
 ## step 2
 ### 他の方の 解答/PR を見てみる  
 refer to  
-https://github.com/takao-Tokunaga/leetcode/pull/6/changes　　
-https://github.com/nicah4o/arai60/pull/6/changes
-https://github.com/wanwan87/LeetCode_arai60/pull/6/changes
+https://github.com/takao-Tokunaga/leetcode/pull/6/changes  
+https://github.com/nicah4o/arai60/pull/6/changes  
+https://github.com/wanwan87/LeetCode_arai60/pull/6/changes  
 https://neetcode.io/solutions/valid-parentheses  
 
 
