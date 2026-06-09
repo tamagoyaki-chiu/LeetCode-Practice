@@ -25,17 +25,65 @@ class Solution:
 ```
 
 ## step 2
+### 他の方の 解答/PR を見てみる  
+refer to  
+https://github.com/takao-Tokunaga/leetcode/pull/6/changes　　
+https://github.com/nicah4o/arai60/pull/6/changes
+https://github.com/wanwan87/LeetCode_arai60/pull/6/changes
+https://neetcode.io/solutions/valid-parentheses  
 
-### 解きなおす
+
+### Stack
+どちらも Stack を使った解法ですが、  
+前者は「閉じ括弧 → 開き括弧」の対応表を使い、  
+後者は「開き括弧 → 閉じ括弧」の対応表を使っています。  
+後者は空の Stack に対して pop() しないように、番兵（sentinel）として "#" を入れている点が特徴です。  
+個人的には一つ目の書き方のほうが好きです。空の Stack を考慮するための特別な工夫がいらないの感じ。　　
 
 ```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        closeToOpen = { ")" : "(", "]" : "[", "}" : "{" }
 
+        for char in s:
+            if char in closeToOpen:
+                if stack and stack[-1] == closeToOpen[char]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(char)
+
+        return True if not stack else False
 ```
 
-### 他の方の PR を見てみる  
-refer to  
 ```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        open_to_close = {"(" : ")", "{" : "}", "[" : "]"}
+        stack = ["#"]
+        for char in s:
+            if char in open_to_close:
+                stack.append(char)
+                continue
+            last_open_brackets = stack.pop()
+            if char != open_to_close.get(last_open_brackets,""):
+                return False
+        return stack == ["#"]
+```
 
+### Dictionary
+自分のStep 1 発想は Stack というより Dictionary に近いものでした。　　
+Stack の練習にはなりませんでしたが、一応これでも解法の一つではあると思います。　　
+```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        while '()' in s or '{}' in s or '[]' in s:
+            s = s.replace('()', '')
+            s = s.replace('{}', '')
+            s = s.replace('[]', '')
+        return s == ''
 ```
 
 ## step 3  
